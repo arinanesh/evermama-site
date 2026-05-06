@@ -82,10 +82,8 @@ header.site .wordmark {
 }
 
 header.site .wordmark-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  box-shadow: var(--shadow-card);
+  width: 30px;
+  height: 30px;
 }
 
 header.site nav {
