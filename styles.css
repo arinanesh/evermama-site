@@ -76,6 +76,16 @@ header.site .wordmark {
   letter-spacing: 0.5px;
   text-decoration: none;
   color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header.site .wordmark-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
 }
 
 header.site nav {
@@ -122,14 +132,6 @@ footer.site a:hover {
   text-align: center;
 }
 
-.hero .icon {
-  width: 92px;
-  height: 92px;
-  border-radius: 22px;
-  box-shadow: var(--shadow-card);
-  margin-bottom: 36px;
-}
-
 .hero h1 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
@@ -146,7 +148,16 @@ footer.site a:hover {
   line-height: 1.55;
   color: var(--ink);
   max-width: 560px;
-  margin: 0 auto 28px;
+  margin: 0 auto 36px;
+}
+
+.hero .hero-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: var(--shadow-card);
+  margin: 0 auto;
 }
 
 .hero .availability {
@@ -249,9 +260,18 @@ section p {
 .habit {
   background: var(--card);
   border-radius: 18px;
-  padding: 22px 24px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.habit img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--page);
+}
+.habit .habit-text {
+  padding: 20px 24px 22px;
 }
 .habit .name {
   font-family: 'Cormorant Garamond', Garamond, serif;
