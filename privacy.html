@@ -6,7 +6,7 @@
     <title>Privacy — EverMama</title>
     <meta
       name="description"
-      content="EverMama's privacy policy: no accounts, no analytics, no cloud. All data stays on your device."
+      content="EverMama's privacy policy: your habits stay on your phone. We collect anonymous diagnostic and usage data through Firebase to fix crashes and improve the app — nothing else."
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
     <meta name="theme-color" content="#fcf3e4" />
@@ -34,66 +34,95 @@
 
       <main class="doc">
         <h1>Privacy policy</h1>
-        <span class="updated">Last updated 2026-05-06</span>
+        <span class="updated">Last updated 2026-05-07</span>
 
         <p>
-          EverMama is built around a simple promise: your habits are yours, and
-          they stay on your phone. This policy explains what that means in
-          plain language, and what we do — and don't — do with your
-          information.
+          EverMama is built so that the things you write — the habits you've
+          added, the times you've completed them, the reflections you've
+          left — never leave your phone. This page explains, in plain
+          language, what we do and don't collect, and why.
+        </p>
+
+        <h2>What stays on your device</h2>
+        <p>
+          Your habits, completions, reminder schedule, and any text you write
+          in EverMama are stored locally in a SQLite database on your phone.
+          That database is not transmitted to any server we operate. If you
+          delete the app, the database is removed along with it.
+        </p>
+        <p>
+          EverMama does not require an account, and never asks for your name,
+          email, phone number, or any other identifying detail.
         </p>
 
         <h2>What we collect</h2>
         <p>
-          <strong>Nothing.</strong> EverMama does not require an account, does
-          not ask for your name or email, and does not include analytics, ad
-          SDKs, crash reporters, or third-party trackers. The app does not
-          transmit your habits, completions, reflections, or reminder settings
-          to any server we operate.
+          EverMama uses two diagnostic tools provided by Google's Firebase
+          platform — the same tools most mobile apps rely on — for two
+          specific purposes:
         </p>
-
-        <h2>Where your data lives</h2>
+        <ul>
+          <li>
+            <strong>Crash reports (Firebase Crashlytics).</strong> When the
+            app crashes, Crashlytics sends us a stacktrace, the app version,
+            your device model, and the operating system version, so we can
+            fix the bug. Stacktraces don't include the contents of your
+            habits, completions, or reflections.
+          </li>
+          <li>
+            <strong>Anonymous usage events (Firebase Analytics).</strong>
+            Analytics records which screens you opened and which actions you
+            took in the app — for example, that you finished onboarding,
+            built a habit, or marked a completion. It does <em>not</em>
+            record what you wrote — just that you did. This helps us
+            understand which parts of the app help and which ones don't.
+          </li>
+        </ul>
         <p>
-          Everything you create in EverMama — the habits you've added, the
-          times you've completed them, your reflections, and your reminder
-          schedule — is stored locally on your device in a SQLite database
-          managed by the app. If you delete the app, that database is removed
-          along with it.
+          Both services attach a randomly-generated, app-specific identifier
+          to the events they send, so events from the same device can be
+          grouped together. That identifier is not your name, email, or any
+          account — EverMama doesn't have any of those — and it resets if
+          you reinstall the app. Firebase also derives an approximate
+          country from the IP address your device uses to connect; the IP
+          itself is not retained alongside the events.
+        </p>
+        <p>
+          We do not use any of this data for advertising. We do not sell it
+          to anyone. We do not use any other trackers, ad SDKs, or
+          third-party analytics.
         </p>
 
         <h2>Notifications</h2>
         <p>
-          If you set a reminder for a habit, the reminder is scheduled by your
-          phone's operating system (iOS or Android) using its local
-          notifications system. The reminder content does not pass through any
-          server. You can revoke notification permission at any time in your
-          device settings.
+          If you set a reminder for a habit, the reminder is scheduled by
+          your phone's operating system as a local notification. The reminder
+          content does not pass through our servers or through Firebase. You
+          can revoke notification permission at any time in your device
+          settings.
         </p>
 
         <h2>Backups</h2>
         <p>
           Like other apps on your device, EverMama's local database may be
-          included in the device-level backups your phone takes (iCloud Backup
-          on iOS, Google Drive backup on Android), if you have those features
-          enabled. Those backups are governed by Apple's and Google's privacy
-          terms, not ours, and EverMama does not have access to them.
+          included in your phone's device-level backups (iCloud Backup on
+          iOS, Google Drive backup on Android), if you have those features
+          enabled. Those backups are governed by Apple's and Google's
+          privacy terms, not ours, and EverMama does not have access to
+          them.
         </p>
 
         <h2>Children</h2>
         <p>
           EverMama is intended for adults — specifically, mothers caring for
-          children. The app is not directed at children under 13 and does not
-          knowingly collect any information from anyone of any age, since it
-          collects no information at all.
+          children. The app is not directed at children under 13.
         </p>
 
         <h2>Changes to this policy</h2>
         <p>
-          If we ever add a feature that involves transmitting data off the
-          device — for example, optional cloud sync between devices — we will
-          update this page before that feature ships, and the app will ask
-          your explicit, informed consent before any data leaves your phone.
-          We will not make that change quietly.
+          If we make material changes to what we collect or how we use it,
+          we'll update this page and bump the date at the top. We won't add
+          new data flows quietly.
         </p>
 
         <h2>Contact</h2>
