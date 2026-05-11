@@ -43,5 +43,6 @@ Both pages share the same header/footer block as `index.html`; if you change one
 ## Things most likely to need editing
 
 - The `Last updated` line on `privacy.html` (line ~37) when the policy text changes.
-- `hello@evermama.app` — appears in every page footer and in the privacy/support contact sections.
+- `hello@evermama.app` — appears only on `privacy.html` (kept there for GDPR / data-subject contact). The footers on `index.html` and `support.html` no longer surface it; `support.html` routes contact through a Web3Forms form instead.
+- The Web3Forms `access_key` value in `support.html` (inside `#contact-form`). Sign up at web3forms.com, swap the placeholder for your key. The key is a public, write-only token scoped to one recipient address — safe to commit.
 - `Coming to iOS and Android in 2026.` on `index.html` — the temporary placeholder for store-link CTAs that will go in once the app ships.

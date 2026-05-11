@@ -36,14 +36,65 @@
         <h1>Support</h1>
         <span class="updated">We try to reply within two business days.</span>
 
-        <h2>Get in touch</h2>
+        <h2 id="contact">Get in touch</h2>
         <p>
-          The fastest way to reach us is by email:
-          <a href="mailto:hello@evermama.app">hello@evermama.app</a>. Tell us
-          what device you're on (iPhone or Android, model and OS version) and
-          what you were doing when something went wrong — that's almost always
-          enough for us to figure it out.
+          Send us a message — we usually reply within two business days. If
+          you're reporting a bug, please tell us what device you're on
+          (iPhone or Android, model and OS version) and what you were doing
+          when something went wrong — that's almost always enough for us to
+          figure it out.
         </p>
+
+        <form
+          id="contact-form"
+          class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="36fca2a2-37ac-4002-a437-a02b42f2a155"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="New contact form message from evermama.app"
+          />
+          <input
+            type="hidden"
+            name="from_name"
+            value="EverMama contact form"
+          />
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hp"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+
+          <label for="cf-email">Your email</label>
+          <input
+            type="email"
+            id="cf-email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+
+          <label for="cf-message">Message</label>
+          <textarea
+            id="cf-message"
+            name="message"
+            rows="6"
+            required
+          ></textarea>
+
+          <button type="submit">Send message</button>
+          <p class="contact-status" aria-live="polite"></p>
+        </form>
 
         <h2>Common questions</h2>
 
@@ -94,9 +145,8 @@
         <p>
           EverMama is built slowly and on purpose. If something feels off —
           tone, copy, a sequence that grates, anything — we want to hear it.
-          Email
-          <a href="mailto:hello@evermama.app">hello@evermama.app</a>
-          and tell us what you saw and what would have felt right instead.
+          <a href="#contact">Send us a message</a> and tell us what you saw
+          and what would have felt right instead.
         </p>
       </main>
 
@@ -105,9 +155,62 @@
         <nav>
           <a href="/privacy.html">Privacy</a>
           <a href="/support.html">Support</a>
-          <a href="mailto:hello@evermama.app">hello@evermama.app</a>
         </nav>
       </footer>
     </div>
+
+    <script>
+      (function () {
+        var form = document.getElementById('contact-form');
+        if (!form) return;
+        var status = form.querySelector('.contact-status');
+        var submit = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          status.textContent = '';
+          status.className = 'contact-status';
+          submit.disabled = true;
+          submit.textContent = 'Sending…';
+
+          var payload = Object.fromEntries(new FormData(form));
+
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(payload),
+          })
+            .then(function (res) {
+              return res.json().then(function (data) {
+                return { ok: res.ok, data: data };
+              });
+            })
+            .then(function (result) {
+              if (result.ok && result.data.success) {
+                form.reset();
+                status.textContent =
+                  "Thanks — we got it. We'll reply within two business days.";
+                status.classList.add('ok');
+              } else {
+                status.textContent =
+                  (result.data && result.data.message) ||
+                  'Something went wrong. Please try again.';
+                status.classList.add('err');
+              }
+            })
+            .catch(function () {
+              status.textContent = 'Network error. Please try again.';
+              status.classList.add('err');
+            })
+            .finally(function () {
+              submit.disabled = false;
+              submit.textContent = 'Send message';
+            });
+        });
+      })();
+    </script>
   </body>
 </html>
