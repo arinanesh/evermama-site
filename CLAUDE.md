@@ -24,7 +24,7 @@ The shipping target is `evermama.app`. Deploy by uploading the directory to any 
 This site is a sibling of `evermama-habit-builder` (the React Native app repo) and is intentionally not standalone:
 
 - **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — cream `#fcf3e4`, brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here.
-- **Illustrations** under `assets/illustrations/` are verbatim copies from the app's `assets/illustrations/` (already resized through the app's `scripts/resize-illustration.js` to ~500–580 KB each for the Android decode budget). Copy in, don't regenerate.
+- **Screenshots** under `assets/screenshots/` come from `evermama-habit-builder/store-assets/ios/screenshots/`, but **not verbatim** — the originals are 1284 × 2778 (App Store submission size, up to ~2.5 MB each), far too heavy for a marketing page. They're resampled to 640 px wide via `System.Drawing.Bitmap` (`InterpolationMode.HighQualityBicubic`), landing at ~180–720 KB each. If you swap one in, copy first then resize in place; keep PNG (cream background + hand-painted illustrations baked into the screens make JPG artifacts ugly). The app's own painterly illustrations under `evermama-habit-builder/assets/illustrations/` are still visible *inside* the screens, so they remain the visual continuity glue between site and app even though no illustration PNGs ship with the site anymore.
 
 ## Brand rules
 
@@ -45,4 +45,4 @@ Both pages share the same header/footer block as `index.html`; if you change one
 - The `Last updated` line on `privacy.html` (line ~37) when the policy text changes.
 - `hello@evermama.app` — appears only on `privacy.html` (kept there for GDPR / data-subject contact). The footers on `index.html` and `support.html` no longer surface it; `support.html` routes contact through a Web3Forms form instead.
 - The Web3Forms `access_key` value in `support.html` (inside `#contact-form`). Sign up at web3forms.com, swap the placeholder for your key. The key is a public, write-only token scoped to one recipient address — safe to commit.
-- `Coming to iOS and Android in 2026.` on `index.html` — the temporary placeholder for store-link CTAs that will go in once the app ships.
+- The hero CTA on `index.html` — Android is live (`https://play.google.com/store/apps/details?id=com.evermama.app`) and uses the official Play badge at `/assets/google-play-badge.png` (downloaded verbatim from Google's static URL, ~5 KB). iOS still reads `iOS, soon` in italic Cormorant beside the badge — swap that span for an App Store badge + link once the App Store listing exists. The official App Store badge SVGs live at `https://developer.apple.com/app-store/marketing/guidelines/` (download, don't hotlink).
