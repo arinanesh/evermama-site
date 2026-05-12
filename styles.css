@@ -247,19 +247,24 @@ footer.site a:hover {
   flex-wrap: wrap;
   gap: 16px;
 }
-.hero .availability .play-badge {
+.hero .availability .store-badge {
   display: inline-block;
   text-decoration: none;
   line-height: 0;
   transition: opacity 0.2s ease;
 }
-.hero .availability .play-badge:hover {
+.hero .availability .store-badge:hover {
   opacity: 0.85;
 }
-.hero .availability .play-badge img {
+.hero .availability .store-badge img {
   display: block;
-  height: 56px;
   width: auto;
+}
+.hero .availability .play-badge img {
+  height: 56px;
+}
+.hero .availability .app-store-badge img {
+  height: 40px;
 }
 
 /* ---------- sections ---------- */
