@@ -164,6 +164,7 @@ footer.site a:hover {
   border-radius: 38px;
   padding: 7px;
   box-shadow: var(--shadow-card);
+  cursor: zoom-in;
 }
 .phone img {
   display: block;
@@ -172,6 +173,66 @@ footer.site a:hover {
   object-fit: cover;
   border-radius: 31px;
   background: var(--page);
+}
+
+/* ---------- lightbox ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: rgba(61, 46, 31, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: lightbox-fade 0.18s ease-out;
+  cursor: zoom-out;
+}
+.lightbox[hidden] {
+  display: none;
+}
+.lightbox img {
+  display: block;
+  max-width: min(92vw, 420px);
+  max-height: 90vh;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(252, 243, 228, 0.4);
+  color: var(--page);
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-size: 28px;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.lightbox-close > span {
+  display: block;
+  transform: translateY(-2px);
+}
+.lightbox-close:hover {
+  background: rgba(252, 243, 228, 0.14);
+  border-color: var(--page);
+}
+@keyframes lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .hero .availability {

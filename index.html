@@ -165,5 +165,48 @@
         </nav>
       </footer>
     </div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
+      <button type="button" class="lightbox-close" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <img alt="" />
+    </div>
+
+    <script>
+      (function () {
+        var box = document.getElementById('lightbox');
+        var img = box.querySelector('img');
+        var lastFocus = null;
+
+        function open(src, alt) {
+          lastFocus = document.activeElement;
+          img.src = src;
+          img.alt = alt || '';
+          box.hidden = false;
+          document.body.style.overflow = 'hidden';
+          box.querySelector('.lightbox-close').focus();
+        }
+        function close() {
+          box.hidden = true;
+          img.removeAttribute('src');
+          document.body.style.overflow = '';
+          if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+
+        document.querySelectorAll('.phone').forEach(function (phone) {
+          var phoneImg = phone.querySelector('img');
+          if (!phoneImg) return;
+          phone.addEventListener('click', function () {
+            open(phoneImg.src, phoneImg.alt);
+          });
+        });
+
+        box.addEventListener('click', function (e) {
+          if (e.target !== img) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !box.hidden) close();
+        });
+      })();
+    </script>
   </body>
 </html>
