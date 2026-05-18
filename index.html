@@ -41,6 +41,7 @@
         </nav>
       </header>
 
+      <main>
       <section class="hero">
         <h1>a quiet habit builder<br />for the long game of motherhood</h1>
         <p class="lede">
@@ -76,8 +77,8 @@
           </a>
         </p>
         <p class="availability-note">
-          EverMama is still being built. Have something you'd want in it?
-          <a href="https://forms.gle/dcR8sUbCnc4DHEsK9" target="_blank" rel="noopener">Tell us.</a>
+          EverMama is still being built. Have something you'd want in
+          it?&nbsp;<a href="https://forms.gle/dcR8sUbCnc4DHEsK9" target="_blank" rel="noopener" style="white-space: nowrap">Tell&nbsp;us.</a>
         </p>
       </section>
 
@@ -185,6 +186,7 @@
           now, durable capability later.
         </p>
       </section>
+      </main>
 
       <footer class="site">
         <div>© 2026 EverMama</div>
@@ -199,6 +201,34 @@
       <button type="button" class="lightbox-close" aria-label="Close"><span aria-hidden="true">×</span></button>
       <img alt="" />
     </div>
+
+    <script>
+      // Honour the OS Reduce Motion setting for the hero preview video.
+      // The CSS @media (prefers-reduced-motion: reduce) block neutralises
+      // every transition and keyframe animation on the page, but a
+      // <video> element ignores CSS animation suppression — its autoplay
+      // is governed by the element's own attributes. This pauses it on
+      // the poster frame so nothing loops in the background. Mirrors the
+      // app's Phase 7 runtime accessibility layer.
+      (function () {
+        var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (!mq) return;
+        function apply() {
+          document.querySelectorAll('.hero-phone video').forEach(function (v) {
+            if (mq.matches) {
+              v.removeAttribute('autoplay');
+              v.pause();
+              v.currentTime = 0;
+            } else if (v.paused) {
+              v.play().catch(function () {});
+            }
+          });
+        }
+        apply();
+        if (mq.addEventListener) mq.addEventListener('change', apply);
+        else if (mq.addListener) mq.addListener(apply);
+      })();
+    </script>
 
     <script>
       (function () {

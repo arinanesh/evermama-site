@@ -1,23 +1,47 @@
 /* EverMama site — design tokens mirrored from the app's ui/tokens/index.ts.
    Cream background, brown ink, two serif families. Generic-serif fallback
-   only — the app spec forbids sans, and the marketing surface follows. */
+   only — the app spec forbids sans, and the marketing surface follows.
+
+   The seven color tokens below carry the app's accessibility audit (see
+   docs/accessibility-audit-final.html in the app repo) past the WCAG AA
+   contrast floor on cream. Earlier values sat between 2.40:1 and 4.32:1
+   for normal text and small chrome; the deepened palette lands every
+   token at ~4.7:1 or higher, with the morning accent re-hued from warm
+   amber (which collided with afternoon's rust) into dawn teal so the
+   four windows occupy four distinct quadrants of the color wheel. */
 
 :root {
   --page: #fcf3e4;
   --page-warm: #fff5e0;
   --card: #fdf5ea;
   --ink: #3d2e1f;
-  --muted: #8a7058;
-  --whisper: #8a7058;
+  /* muted/whisper: #8a7058 (4.22:1, sub-AA) → #6e5640 (6.23:1) — the
+     universal secondary tier: nav, footer, kickers, doc-updated, tour
+     futures, contact-form labels, status placeholders. */
+  --muted: #6e5640;
+  --whisper: #6e5640;
   --border-soft: #e0cfb0;
   --border: #d4c4a0;
-  --sage: #7a9268;
-  --terracotta: #c47660;
+  /* sage: shifted from the illustration-fill sage #7a9268 (3.12:1) to
+     the deepened anytime-accent #5d7a4d (~5:1). On the site this token
+     is text-only (.contact-status.ok), so it tracks the readable tier;
+     the app keeps a separate accent.sage #a8c092 for illustration fills
+     where contrast doesn't apply. */
+  --sage: #5d7a4d;
+  /* terracotta: #c47660 (3.10:1) → #a04a2f (~4.7:1) — carries the
+     cream-on-terracotta form button, the availability-note link, the
+     focus border on inputs, and the error status. */
+  --terracotta: #a04a2f;
 
-  --morning: #d4915c;
-  --afternoon: #c17767;
-  --evening: #7a6a9e;
-  --anytime: #7a9268;
+  /* Four-window accent palette — re-hued and deepened so each window
+     sits in its own quadrant of the wheel (dawn teal 188° · rust 13°
+     · violet 251° · sage 102°) and reads as a temperature arc across
+     the day. Defined but currently unreferenced on the site; kept in
+     sync with the app per the cross-repo coupling rule. */
+  --morning: #2e6e7a;
+  --afternoon: #9c4838;
+  --evening: #5a4e80;
+  --anytime: #5d7a4d;
 
   --shadow-card: 0 4px 20px rgba(80, 50, 28, 0.06);
   --shadow-ring: 0 2px 10px rgba(80, 50, 28, 0.12);
@@ -46,7 +70,14 @@ body {
 a {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--border);
+  /* Link underlines need >=3:1 against the page background per WCAG
+     1.4.11 — they are the only thing that differentiates a link from
+     surrounding ink-on-cream prose. `--border` (#d4c4a0) sat at 1.83:1
+     and read as a hairline decoration rather than an affordance.
+     `--muted` (#6e5640) is the same token the link's hover-color and
+     all secondary text use, so the underline now signals "this is the
+     readable secondary tier" rather than "this is a faint rule". */
+  text-decoration-color: var(--muted);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.2s ease;
 }
@@ -94,6 +125,13 @@ header.site nav {
 header.site nav a {
   text-decoration: none;
   color: var(--muted);
+  /* Lift the touch target above the WCAG 2.5.8 (AA) 24x24 floor. The font
+     alone gives ~22px of vertical hit area; the symmetric 6px padding
+     brings it to 27px, and the negative inline margin offsets the
+     padding so the visual gap between the wordmark and the nav row
+     stays exactly where it was. */
+  padding: 6px 2px;
+  margin: -6px 0;
 }
 header.site nav a:hover {
   color: var(--ink);
@@ -118,6 +156,11 @@ footer.site nav {
 footer.site a {
   color: var(--muted);
   text-decoration: none;
+  /* Same touch-target lift as the header nav (WCAG 2.5.8 AA, 24x24 px
+     floor). 14px font + 12px padding = ~26px hit area. Negative margin
+     preserves the visual baseline so the footer row reads identical. */
+  padding: 6px 2px;
+  margin: -6px 0;
 }
 footer.site a:hover {
   color: var(--ink);
@@ -133,7 +176,6 @@ footer.site a:hover {
 .hero h1 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 52px;
   line-height: 1.1;
   letter-spacing: -0.5px;
@@ -245,7 +287,6 @@ footer.site a:hover {
 
 .hero .availability {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-style: italic;
   font-size: 17px;
   color: var(--muted);
   margin-top: 36px;
@@ -276,7 +317,6 @@ footer.site a:hover {
 }
 .hero .availability-note {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-style: italic;
   font-size: 19px;
   color: var(--ink);
   text-align: center;
@@ -298,7 +338,6 @@ section {
 section h2 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 34px;
   line-height: 1.2;
   margin: 0 0 28px;
@@ -349,7 +388,6 @@ section p {
   margin-bottom: 6px;
 }
 .tour-card .future {
-  font-style: italic;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.55;
@@ -363,21 +401,18 @@ section p {
 .doc h1 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 42px;
   line-height: 1.15;
   margin: 0 0 8px;
 }
 .doc .updated {
   display: block;
-  font-style: italic;
   color: var(--muted);
   font-size: 15px;
   margin-bottom: 28px;
 }
 .doc .doc-lede {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-style: italic;
   font-size: 22px;
   line-height: 1.4;
   color: var(--ink);
@@ -449,7 +484,6 @@ section p {
 .contact-form button {
   align-self: flex-start;
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-style: italic;
   font-size: 18px;
   color: var(--page);
   background: var(--ink);
@@ -469,7 +503,6 @@ section p {
 }
 .contact-status {
   margin: 6px 0 0;
-  font-style: italic;
   font-size: 15px;
   min-height: 1.2em;
 }
@@ -478,6 +511,35 @@ section p {
 }
 .contact-status.err {
   color: var(--terracotta);
+}
+
+/* ---------- reduce motion ----------
+   Mirrors the app's Phase 7 runtime accessibility layer (commit 28f3517
+   in evermama-habit-builder, docs/accessibility-audit.html §7). Visitors
+   running the OS-level Reduce Motion setting get the same affordance
+   here: link/button colour transitions collapse to instant, the lightbox
+   crossfade drops to a hard cut, and the hero preview video pauses on
+   its poster frame so nothing autoplays. The visual default is
+   unchanged for everyone else. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Pause the autoplay hero preview. Safari respects this via the
+     `controls` paint, but the video element itself ignores CSS
+     animation suppression — the tiny inline script at the bottom of
+     index.html handles the actual `pause()` call. This rule is the
+     CSS half: hide the would-be loop indicator if controls ever
+     surface. */
+  .hero-phone video {
+    animation-play-state: paused !important;
+  }
 }
 
 /* ---------- responsive ---------- */
