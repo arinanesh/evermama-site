@@ -23,7 +23,7 @@ The shipping target is `evermama.app`. Deploy by uploading the directory to any 
 
 This site is a sibling of `evermama-habit-builder` (the React Native app repo) and is intentionally not standalone:
 
-- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — cream `#fcf3e4`, brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here.
+- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — cream `#faf5ec`, brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here.
 - **Screenshots** under `assets/screenshots/` come from `evermama-habit-builder/store-assets/ios/screenshots/`, but **not verbatim** — the originals are 1284 × 2778 (App Store submission size, up to ~2.5 MB each), far too heavy for a marketing page. They're resampled to 640 px wide via `System.Drawing.Bitmap` (`InterpolationMode.HighQualityBicubic`), landing at ~180–720 KB each. If you swap one in, copy first then resize in place; keep PNG (cream background + hand-painted illustrations baked into the screens make JPG artifacts ugly). The app's own painterly illustrations under `evermama-habit-builder/assets/illustrations/` are still visible *inside* the screens, so they remain the visual continuity glue between site and app even though no illustration PNGs ship with the site anymore.
 
 ## Brand rules

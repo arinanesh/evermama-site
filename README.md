@@ -22,7 +22,7 @@ assets/
 
 ## Brand
 
-Cream background (`#fcf3e4`) and brown ink (`#3d2e1f`); two serif families
+Cream background (`#faf5ec`) and brown ink (`#3d2e1f`); two serif families
 (Cormorant Garamond + EB Garamond, loaded from Google Fonts); generic-serif
 fallback only — never sans. Tokens mirror `ui/tokens/index.ts` in the app
 repo.

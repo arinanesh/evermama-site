@@ -11,9 +11,9 @@
    four windows occupy four distinct quadrants of the color wheel. */
 
 :root {
-  --page: #fcf3e4;
+  --page: #faf5ec;
   --page-warm: #fff5e0;
-  --card: #fdf5ea;
+  --card: #fbf7f2;
   --ink: #3d2e1f;
   /* muted/whisper: #8a7058 (4.22:1, sub-AA) → #6e5640 (6.23:1) — the
      universal secondary tier: nav, footer, kickers, doc-updated, tour
