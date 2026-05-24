@@ -12,7 +12,6 @@
 
 :root {
   --page: #faf5ec;
-  --page-warm: #fff5e0;
   --card: #fbf7f2;
   --ink: #3d2e1f;
   /* muted/whisper: #8a7058 (4.22:1, sub-AA) → #6e5640 (6.23:1) — the
@@ -43,7 +42,13 @@
   --evening: #5a4e80;
   --anytime: #5d7a4d;
 
-  --shadow-card: 0 4px 20px rgba(80, 50, 28, 0.06);
+  /* shadow-card: 14% alpha (was 6%) — mirrors the app's shadows.card
+     bump in ui/tokens/index.ts. The 6% the spec originally specified
+     rendered below perception threshold against the cream page, so
+     cards (and the site's phone frames) floated flush with the
+     background. 14% restores a visible lift while staying inside the
+     brand's quiet, anti-Material register. */
+  --shadow-card: 0 4px 20px rgba(80, 50, 28, 0.14);
   --shadow-ring: 0 2px 10px rgba(80, 50, 28, 0.12);
 }
 
