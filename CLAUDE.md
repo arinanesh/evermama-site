@@ -23,8 +23,12 @@ The shipping target is `evermama.app`. Deploy by uploading the directory to any 
 
 This site is a sibling of `evermama-habit-builder` (the React Native app repo) and is intentionally not standalone:
 
-- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — cream `#faf5ec`, brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here.
-- **Screenshots** under `assets/screenshots/` come from `evermama-habit-builder/store-assets/ios/screenshots/`, but **not verbatim** — the originals are 1284 × 2778 (App Store submission size, up to ~2.5 MB each), far too heavy for a marketing page. They're resampled to 640 px wide via `System.Drawing.Bitmap` (`InterpolationMode.HighQualityBicubic`), landing at ~180–720 KB each. If you swap one in, copy first then resize in place; keep PNG (cream background + hand-painted illustrations baked into the screens make JPG artifacts ugly). The app's own painterly illustrations under `evermama-habit-builder/assets/illustrations/` are still visible *inside* the screens, so they remain the visual continuity glue between site and app even though no illustration PNGs ship with the site anymore.
+- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here. **One deliberate inversion:** the site's `--page` is the app's *card* cream `#fbf7f2` (the tone a habit card is painted on), not the app's page cream `#faf5ec`. The marketing surface reads as one continuous card. Because there's no lighter tone left to lift with, `--card` takes `#faf5ec` and the site's inset surfaces (contact-form fields) *recess* instead of lifting. The `theme-color` meta on all three pages tracks `--page`.
+- **Screenshots** under `assets/screenshots/` come from `evermama-habit-builder/store-assets/ios/screenshots/`, but **not verbatim** — the originals are 1284 × 2778 (App Store submission size, up to ~2.5 MB each), far too heavy for a marketing page. They're resampled to 640 px wide; `sharp` does it cleanly (`.resize({width:640}).png({compressionLevel:9, palette:true, quality:80})`), and `sharp` lives in the sibling app repo's `node_modules`, not here. Keep PNG — cream backgrounds plus hand-painted illustrations inside the screens make JPG artifacts ugly.
+  - **The home page shows three, in phone frames**: library, build, future-me. This is the long-standing layout and it is the one that looks right. An August 2026 attempt to replace it with a grid of ten per-feature crops (600 × 400 windows cut from each screenshot with `sharp.extract`) was reverted on sight — the crops were accurate but the page read as cluttered and busy. Don't re-try it without a design pass; if more screens need showing, add phone-framed cards, not crops.
+  - `03-home.png` ships but is unreferenced — kept as a ready alternative if a fourth card is ever wanted.
+  - **`01-welcome.png` is deliberately absent.** The store capture predates the July 2026 plain-voice pivot — it still reads *a keepsake, not a tracker* and *every small habit today shapes the mother you'll become*, neither of which the shipped app says any more (and the first is exactly the negation-correction pattern the voice bar bans). Re-capture the welcome screen from a device before using it.
+- **Illustrations.** `assets/illustrations/intro-hero.png` is the home page's hero band: the app's `assets/illustrations/intro.png` (1080 × 720) pre-cropped to 1080 × 520 to trim empty ceiling and foreground floor while keeping both figures whole. The crop lives in the *asset*, not in CSS — a fixed-height `object-fit: cover` band cuts the mother's head off, because every one of these scenes composes its figures near the vertical middle. If you swap the hero, crop the file the same way.
 
 ## Brand rules
 
@@ -39,6 +43,14 @@ The store consoles point at these URLs — don't rename or move:
 - Support → `/support.html`
 
 Both pages share the same header/footer block as `index.html`; if you change one (e.g., adding a nav link), change all three.
+
+## Page structure
+
+`index.html` is: hero (painted scene, headline, phone video, store badges) → *why it works* → *inside the app* → *the receipts* (the research links). *Inside the app* is **one** section: three phone-framed screenshots on top, then a quiet text row (`.feats-quiet`) for the six features that have no screenshot of their own — hold-to-complete, no-streak, reminders, notes to self, the slip offer, undo/soft-day. There is no separate "details" section; a gallery plus a near-identical feature list is the same content twice.
+
+## Voice
+
+Copy follows the app's plain girlfriend voice — the bar is codified in `evermama-habit-builder/.claude/skills/tune-library-prose/SKILL.md`, and the library prose in `content/library/habits/*.json` is the reference register. Short sentences, contractions, concrete objects (the kettle, the crib, 11pm), a little humor. **Avoid** balanced em-dash triads, poetic abstraction, and the *"X, not Y"* negation-correction pattern. Positioning follows `evermama-habit-builder/docs/search-trends-report-2026-08.html`: pair the decades-long promise with a benefit she feels this week, frame around time scarcity, lead the anti-streak stance as a differentiator, and keep biohacker vocabulary (protocols, optimization, scores) out entirely.
 
 ## Things most likely to need editing
 

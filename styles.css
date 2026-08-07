@@ -11,8 +11,17 @@
    four windows occupy four distinct quadrants of the color wheel. */
 
 :root {
-  --page: #faf5ec;
-  --card: #fbf7f2;
+  /* page: the app's `background.card` (#fbf7f2) — the cream a habit card
+     is painted on, not the app's page cream (#faf5ec) behind it. The
+     marketing surface is one continuous card, so it takes the card tone;
+     the two sit 1/2/6 RGB apart, so every contrast pair below keeps the
+     headroom measured in the app's audit (text.ink ~12.0:1 and up). */
+  --page: #fbf7f2;
+  /* card: inverted relative to the app. On a page painted in the card
+     cream there is no lighter tone to lift with, so the site's inset
+     surfaces (contact-form fields) recess instead — they take the app's
+     page cream #faf5ec, one step darker than the surface around them. */
+  --card: #faf5ec;
   --ink: #3d2e1f;
   /* muted/whisper: #8a7058 (4.22:1, sub-AA) → #6e5640 (6.23:1) — the
      universal secondary tier: nav, footer, kickers, doc-updated, tour
@@ -66,8 +75,8 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: 'EB Garamond', Garamond, 'Iowan Old Style', 'Apple Garamond', serif;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 19px;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -93,9 +102,9 @@ a:hover {
 /* ---------- layout ---------- */
 
 .page {
-  max-width: 720px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 32px;
 }
 
 header.site {
@@ -125,7 +134,7 @@ header.site .wordmark-icon {
 header.site nav {
   display: flex;
   gap: 22px;
-  font-size: 15px;
+  font-size: 16px;
 }
 header.site nav a {
   text-decoration: none;
@@ -146,7 +155,7 @@ footer.site {
   margin: 80px 0 48px;
   padding-top: 28px;
   border-top: 1px solid var(--border-soft);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
   display: flex;
   flex-wrap: wrap;
@@ -174,14 +183,46 @@ footer.site a:hover {
 /* ---------- hero ---------- */
 
 .hero {
-  padding: 88px 0 56px;
+  padding: 40px 0 56px;
   text-align: center;
+}
+
+/* The welcome-room scene, mirroring the app's first screen: the painting
+   runs the width of the column and melts into the page cream through a
+   gradient rather than ending on a hard edge, so the top of the page
+   reads as one warm room instead of a picture pasted above text. The
+   fade color must track --page exactly or a seam appears. */
+
+.hero-scene {
+  position: relative;
+  margin: 0 0 30px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+/* No CSS crop. The painted scenes put the mother and child near the
+   vertical middle, so any fixed-height `object-fit: cover` band takes
+   their heads off. `intro-hero.png` is instead pre-cropped in the asset
+   itself (1080x520 — empty ceiling and foreground floor trimmed, whole
+   figure kept), and rendered at its natural ratio so the headline still
+   clears the fold. */
+.hero-scene img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-scene::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 32%;
+  background: linear-gradient(to bottom, rgba(251, 247, 242, 0), var(--page));
+  pointer-events: none;
 }
 
 .hero h1 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
-  font-size: 52px;
+  font-size: 54px;
   line-height: 1.1;
   letter-spacing: -0.5px;
   margin: 0 0 20px;
@@ -189,7 +230,7 @@ footer.site a:hover {
 }
 
 .hero p.lede {
-  font-size: 21px;
+  font-size: 23px;
   line-height: 1.55;
   color: var(--ink);
   max-width: 560px;
@@ -292,7 +333,7 @@ footer.site a:hover {
 
 .hero .availability {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 17px;
+  font-size: 18px;
   color: var(--muted);
   margin-top: 36px;
   display: flex;
@@ -322,7 +363,7 @@ footer.site a:hover {
 }
 .hero .availability-note {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 19px;
+  font-size: 20px;
   color: var(--ink);
   text-align: center;
   max-width: 500px;
@@ -343,7 +384,7 @@ section {
 section h2 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 400;
-  font-size: 34px;
+  font-size: 36px;
   line-height: 1.2;
   margin: 0 0 28px;
   color: var(--ink);
@@ -359,18 +400,22 @@ section p {
   text-align: center;
   font-family: 'EB Garamond', serif;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 12px;
+  letter-spacing: 3px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 12px;
 }
 
 /* ---------- app tour ---------- */
 
+/* Three phone-framed screenshots, the site's original layout. Sizes are
+   nudged up from the pre-2026-08 values to sit with the wider column and
+   the raised type scale; the structure is unchanged. */
+
 .tour {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 34px;
   margin-top: 8px;
 }
 .tour-card {
@@ -381,21 +426,46 @@ section p {
   text-align: center;
 }
 .tour-card .phone {
-  max-width: 220px;
+  max-width: 240px;
 }
 .tour-card figcaption {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 .tour-card .name {
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 500;
   margin-bottom: 6px;
 }
 .tour-card .future {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* The features with no screen of their own — a quiet text row closing the
+   same section, so the page keeps one "what it does" section rather than
+   splitting into a gallery plus a near-identical feature list. */
+
+.feats-quiet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 34px;
+  margin-top: 56px;
+  padding-top: 44px;
+  border-top: 1px solid var(--border-soft);
+}
+.feats-quiet h3 {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+.feats-quiet p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ---------- legal pages (privacy / support) ---------- */
@@ -413,7 +483,7 @@ section p {
 .doc .updated {
   display: block;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 28px;
 }
 .doc .doc-lede {
@@ -427,12 +497,12 @@ section p {
 .doc h2 {
   font-family: 'Cormorant Garamond', Garamond, serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 26px;
   margin: 36px 0 12px;
 }
 .doc p,
 .doc li {
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.65;
 }
 .doc ul {
@@ -454,14 +524,14 @@ section p {
   font-family: 'EB Garamond', serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: -6px;
 }
 .contact-form input[type='email'],
 .contact-form textarea {
   font-family: 'EB Garamond', Garamond, 'Iowan Old Style', serif;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.55;
   color: var(--ink);
   background: var(--card);
@@ -489,7 +559,7 @@ section p {
 .contact-form button {
   align-self: flex-start;
   font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 18px;
+  font-size: 19px;
   color: var(--page);
   background: var(--ink);
   border: none;
@@ -508,7 +578,7 @@ section p {
 }
 .contact-status {
   margin: 6px 0 0;
-  font-size: 15px;
+  font-size: 16px;
   min-height: 1.2em;
 }
 .contact-status.ok {
@@ -549,6 +619,15 @@ section p {
 
 /* ---------- responsive ---------- */
 
+/* The 8-card gallery steps 4 -> 2 before it steps 2 -> 1, so the phone
+   frames never shrink below a legible screenshot width. */
+@media (max-width: 900px) {
+  .feats-quiet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
 @media (max-width: 540px) {
   .page {
     padding: 0 22px;
@@ -557,13 +636,13 @@ section p {
     padding: 56px 0 40px;
   }
   .hero h1 {
-    font-size: 40px;
+    font-size: 42px;
   }
   .hero p.lede {
-    font-size: 19px;
+    font-size: 21px;
   }
   section h2 {
-    font-size: 28px;
+    font-size: 30px;
   }
   .tour {
     grid-template-columns: 1fr;
@@ -572,8 +651,11 @@ section p {
   .tour-card .phone {
     max-width: 240px;
   }
+  .feats-quiet {
+    grid-template-columns: 1fr;
+  }
   .doc h1 {
-    font-size: 34px;
+    font-size: 36px;
   }
   footer.site {
     flex-direction: column;
