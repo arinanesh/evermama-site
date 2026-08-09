@@ -6,10 +6,10 @@
     <title>Privacy — EverMama</title>
     <meta
       name="description"
-      content="EverMama's privacy policy: your habits stay on your phone. We collect anonymous diagnostic and usage data through Firebase to fix crashes and improve the app — nothing else."
+      content="EverMama's privacy policy: your habits live on your phone, and sync to our servers only if you sign in. We collect anonymous diagnostic and usage data to fix crashes and improve the app — nothing else."
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
-    <meta name="theme-color" content="#faf5ec" />
+    <meta name="theme-color" content="#fbf7f2" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,7 +34,7 @@
 
       <main class="doc">
         <h1>Privacy policy</h1>
-        <span class="updated">Last updated 2026-05-07</span>
+        <span class="updated">Last updated 2026-08-07</span>
 
         <p class="doc-lede">
           You're just <em>mama</em>; that's the whole identity the app
@@ -42,22 +42,62 @@
         </p>
 
         <p>
-          EverMama is built so that the things you write — the habits you've
-          added, the times you've completed them, the reflections you've
-          left — never leave your phone. This page explains, in plain
-          language, what we do and don't collect, and why.
+          EverMama stores the things you write — the habits you've added,
+          the times you've completed them, the reflections you've left — on
+          your phone. If you choose to sign in, your habits also sync to
+          our servers so they can follow you to a new phone. This page
+          explains, in plain language, what we do and don't collect, and
+          why.
         </p>
 
         <h2>What stays on your device</h2>
         <p>
-          Your habits, completions, reminder schedule, and any text you write
-          in EverMama are stored locally in a SQLite database on your phone.
-          That database is not transmitted to any server we operate. If you
-          delete the app, the database is removed along with it.
+          Your habits, completions, reminder schedule, and any text you
+          write in EverMama are stored locally in a SQLite database on
+          your phone. If you never sign in, that database is never
+          transmitted to any server we operate, and deleting the app
+          removes it.
         </p>
         <p>
-          EverMama does not require an account, and never asks for your name,
-          email, phone number, or any other identifying detail.
+          EverMama never asks for your name, and works fully without an
+          account. An account exists for one reason: keeping your habits
+          with you across devices.
+        </p>
+
+        <h2>If you sign in: accounts and sync</h2>
+        <p>
+          You can sign in with Apple or Google from Settings. When you do:
+        </p>
+        <ul>
+          <li>
+            <strong>What syncs.</strong> Your habits and your completion
+            history — including any text you typed into a habit's steps,
+            like a reflection or a friend's name — are stored on our
+            servers (Google's Firebase platform, which we operate our
+            backend on) so a second device signed into the same account
+            can show them. Your <em>notes to self</em> stay on the device
+            they were written on; they are deliberately excluded from
+            sync.
+          </li>
+          <li>
+            <strong>What identifies you.</strong> Apple or Google confirms
+            who you are and gives us an opaque account id; that id is the
+            only identifier attached to your synced data. Your email
+            address is held by the sign-in service and shown inside the
+            app's Settings so you can tell which account you used — the
+            app doesn't store it alongside your habits, and your habits
+            are never linked to your name.
+          </li>
+          <li>
+            <strong>Deleting your account.</strong> Settings has a
+            delete-account action. It removes the server-side account and
+            every piece of synced data with it. The copy on your phone
+            stays yours.
+          </li>
+        </ul>
+        <p>
+          Signing in is optional, sync is included for free, and signing
+          out stops any further syncing.
         </p>
 
         <h2>What we collect</h2>
@@ -86,15 +126,21 @@
         <p>
           Both services attach a randomly-generated, app-specific identifier
           to the events they send, so events from the same device can be
-          grouped together. That identifier is not your name, email, or any
-          account — EverMama doesn't have any of those — and it resets if
-          you reinstall the app. Firebase also derives an approximate
-          country from the IP address your device uses to connect; the IP
-          itself is not retained alongside the events.
+          grouped together. That identifier is not your name, your email,
+          or your EverMama account — usage events are never linked to the
+          account you sign in with — and it resets if you reinstall the
+          app. Firebase also derives an approximate country from the IP
+          address your device uses to connect; the IP itself is not
+          retained alongside the events.
         </p>
         <p>
-          We do not use any of this data for advertising. We do not sell it
-          to anyone. We do not use any other trackers, ad SDKs, or
+          We also count active installs through a service called
+          RevenueCat; it sees a random anonymous id and basic device
+          info, nothing more.
+        </p>
+        <p>
+          We do not use any of this data for advertising. We do not sell
+          it to anyone. We do not use any other trackers, ad SDKs, or
           third-party analytics.
         </p>
 
