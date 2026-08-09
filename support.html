@@ -9,7 +9,7 @@
       content="How to get help with EverMama: contact, common questions, and feedback."
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
-    <meta name="theme-color" content="#fbf7f2" />
+    <meta name="theme-color" content="#fdfcfa" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="site">
+    <header class="site">
+      <div class="wrap">
         <a href="/" class="wordmark">
           <img src="/assets/mark.png" alt="" class="wordmark-icon" />
           EverMama
@@ -29,10 +29,12 @@
         <nav>
           <a href="/privacy.html">Privacy</a>
           <a href="/support.html">Support</a>
+          <a href="/#get" class="nav-cta">Get the app</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main class="doc">
+    <main class="wrap wrap--doc doc">
         <h1>Support</h1>
         <span class="updated">We try to reply within two business days.</span>
 
@@ -105,9 +107,9 @@
 
         <h2>Common questions</h2>
 
-        <h2 style="font-size: 19px; margin-top: 28px;">
+        <h3>
           I deleted the app and reinstalled it — where are my habits?
-        </h2>
+        </h3>
         <p>
           Your habits are stored only on your device, so removing the app
           removes the database. If your phone has iCloud Backup (iOS) or
@@ -116,9 +118,9 @@
           they're gone, and we can't recover them — we never had a copy.
         </p>
 
-        <h2 style="font-size: 19px; margin-top: 28px;">
+        <h3>
           Reminders aren't firing.
-        </h2>
+        </h3>
         <p>
           First, check that EverMama has notification permission in your
           device settings (iOS: Settings → Notifications → EverMama; Android:
@@ -127,9 +129,9 @@
           Focus / Do Not Disturb mode that silences this app.
         </p>
 
-        <h2 style="font-size: 19px; margin-top: 28px;">
+        <h3>
           How do I move my habits to a new phone?
-        </h2>
+        </h3>
         <p>
           Right now, EverMama doesn't have cloud sync — habits live on the
           phone they were created on. The simplest path today is to restore
@@ -139,9 +141,9 @@
           will be opt-in.
         </p>
 
-        <h2 style="font-size: 19px; margin-top: 28px;">
+        <h3>
           Can you add a habit to the library?
-        </h2>
+        </h3>
         <p>
           Yes — please write to us. The library grows over time and we read
           every suggestion. Tell us what the habit is, when in the day it
@@ -149,14 +151,15 @@
         </p>
       </main>
 
-      <footer class="site">
+    <footer class="site">
+      <div class="wrap">
         <div>© 2026 EverMama</div>
         <nav>
           <a href="/privacy.html">Privacy</a>
           <a href="/support.html">Support</a>
         </nav>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
     <script>
       (function () {

@@ -23,7 +23,7 @@ The shipping target is `evermama.app`. Deploy by uploading the directory to any 
 
 This site is a sibling of `evermama-habit-builder` (the React Native app repo) and is intentionally not standalone:
 
-- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here. **One deliberate inversion:** the site's `--page` is the app's *card* cream `#fbf7f2` (the tone a habit card is painted on), not the app's page cream `#faf5ec`. The marketing surface reads as one continuous card. Because there's no lighter tone left to lift with, `--card` takes `#faf5ec` and the site's inset surfaces (contact-form fields) *recess* instead of lifting. The `theme-color` meta on all three pages tracks `--page`.
+- **Design tokens** in `styles.css` `:root` mirror `ui/tokens/index.ts` in the app repo — brown ink `#3d2e1f`, four time-window accents (morning / afternoon / evening / anytime). Don't drift them independently; if the app changes a token, mirror it here. **One deliberate deviation:** the site's `--page` is near-white `#fdfcfa`, not either of the app creams. Painting the whole surface in the app's card cream (the pre-August-2026 approach) made every section the same tone, which is a large part of why the page read as one undifferentiated wall of prose. The app's page cream `#faf5ec` is now the `--band` token, used to *stripe* alternate sections, so cream carries the brand as rhythm rather than as wallpaper. `--page` stays faintly warm rather than pure `#ffffff` on purpose — the screenshots and the painted hero are cream-grounded, and against true white their backgrounds read as dirty gray. `--card` is `#ffffff` (cards lift off both the page and the band), and `--recess` `#faf5ec` carries the contact-form fields, which still sink rather than lift. Two new on-ink tokens (`--on-ink`, `--on-ink-muted`) serve the inverted `.band--ink` sections. Everything else — ink, muted, terracotta, sage, the four window accents, the shadows — still mirrors the app and must not drift independently. The `theme-color` meta on all three pages tracks `--page`.
 - **Screenshots** under `assets/screenshots/` come from `evermama-habit-builder/store-assets/ios/screenshots/`, but **not verbatim** — the originals are 1284 × 2778 (App Store submission size, up to ~2.5 MB each), far too heavy for a marketing page. They're resampled to 640 px wide; `sharp` does it cleanly (`.resize({width:640}).png({compressionLevel:9, palette:true, quality:80})`), and `sharp` lives in the sibling app repo's `node_modules`, not here. Keep PNG — cream backgrounds plus hand-painted illustrations inside the screens make JPG artifacts ugly.
   - **The home page shows three, in phone frames**: library, build, future-me. This is the long-standing layout and it is the one that looks right. An August 2026 attempt to replace it with a grid of ten per-feature crops (600 × 400 windows cut from each screenshot with `sharp.extract`) was reverted on sight — the crops were accurate but the page read as cluttered and busy. Don't re-try it without a design pass; if more screens need showing, add phone-framed cards, not crops.
   - `03-home.png` ships but is unreferenced — kept as a ready alternative if a fourth card is ever wanted.
@@ -46,7 +46,24 @@ Both pages share the same header/footer block as `index.html`; if you change one
 
 ## Page structure
 
-`index.html` is: hero (painted scene, headline, phone video, store badges) → *why it works* → *inside the app* → *the receipts* (the research links). *Inside the app* is **one** section: three phone-framed screenshots on top, then a quiet text row (`.feats-quiet`) for the six features that have no screenshot of their own — hold-to-complete, no-streak, reminders, notes to self, the slip offer, undo/soft-day. There is no separate "details" section; a gallery plus a near-identical feature list is the same content twice.
+`index.html` is eight full-bleed bands, alternating `--page` against `--band` so the page reads as sectioned rather than as one scroll of prose:
+
+1. **hero** — painted scene, headline, one-sentence lede, store badges
+2. **why mamas keep it** (tint) — four short `.card`s
+3. **how it works** — three numbered `.step`s, numerals taking the time-window accent arc
+4. **done in one tap** (tint) — `.split`: copy plus the looping product video, and the `.plain-list` of notification behaviors
+5. **inside the app** — three phone-framed screenshots
+6. **miss a Tuesday, nothing breaks** (`.band--ink`) — the anti-streak stance, heading and one paragraph
+7. **tiny now, enormous later** — two `.card`s
+8. **the receipts** (tint) — four `.receipt` cards, one research claim each, plus the ACOG/WHO footnote
+9. **closing CTA** (`.band--ink`, `#get`) — badges again
+
+Rules that hold across the rebuild:
+
+- **Each band is short by design.** A `.card` or `.step` holds a heading and at most two sentences; `.section-lede` is one sentence. The reading is supposed to happen in the app. If a band needs three paragraphs, it wants to be two bands.
+- **`.band--ink` is the emphasis tone and is spent exactly twice** (the anti-streak stance and the closing CTA). Adding a third costs the other two their weight.
+- **Screenshots stay phone-framed, three of them.** Unchanged from before, and per the note above, the crop-grid experiment was reverted on sight.
+- **The header/footer block is identical on all three pages**, including the `.nav-cta` pointing at `/#get`. Change one, change all three.
 
 ## Voice
 

@@ -6,11 +6,11 @@
     <title>EverMama — habits for mama life</title>
     <meta
       name="description"
-      content="A habit app for new mamas: you pick something small, tie it to a moment that already happens in your day, and let it add up. No account, no streaks, nothing to lose."
+      content="A habit app for new mamas: pick something small, tie it to a moment that already happens in your day, and tap done from your phone or your wrist. No account, no streaks."
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/icon.png" />
-    <meta name="theme-color" content="#fbf7f2" />
+    <meta name="theme-color" content="#fdfcfa" />
 
     <meta property="og:title" content="EverMama" />
     <meta
@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="site">
+    <header class="site">
+      <div class="wrap">
         <a href="/" class="wordmark">
           <img src="/assets/mark.png" alt="" class="wordmark-icon" />
           EverMama
@@ -38,213 +38,367 @@
         <nav>
           <a href="/privacy.html">Privacy</a>
           <a href="/support.html">Support</a>
+          <a href="/#get" class="nav-cta">Get the app</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main>
+    <main>
       <section class="hero">
-        <div class="hero-scene">
-          <img
-            src="/assets/illustrations/intro-hero.png"
-            width="1080"
-            height="520"
-            alt="A painted scene of a mother sitting cross-legged on a yoga mat in a sunlit room, her small child sitting beside her holding a toy."
-          />
+        <div class="wrap">
+          <div class="hero-scene">
+            <img
+              src="/assets/illustrations/intro-hero.png"
+              width="1080"
+              height="520"
+              alt="A painted scene of a mother sitting cross-legged on a yoga mat in a sunlit room, her small child sitting beside her holding a toy."
+            />
+          </div>
+          <h1>little habits that fit<br />the day you already have</h1>
+          <p class="lede">
+            Two squats while the kettle boils. A glass of water before your
+            coffee. You tie it to something you already do, and that's the
+            part that makes it stick.
+          </p>
+          <p class="badges">
+            <a
+              href="https://apps.apple.com/us/app/evermama/id6767789541"
+              class="store-badge app-store-badge"
+              aria-label="Download EverMama on the App Store"
+            >
+              <img src="/assets/app-store-badge.svg" alt="Download on the App Store" />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.evermama.app"
+              class="store-badge play-badge"
+              aria-label="Get EverMama on Google Play"
+            >
+              <img src="/assets/google-play-badge.png" alt="Get it on Google Play" />
+            </a>
+          </p>
         </div>
-        <h1>little habits that fit<br />the day you already have</h1>
-        <p class="lede">
-          You pick something small enough to feel almost silly &mdash; two
-          squats while the kettle boils, a glass of water before your
-          coffee &mdash; and you tie it to a moment that already happens in
-          your day, which is the part that makes it stick. Small is
-          deliberate here, because small is what survives the weeks when
-          nobody in the house is sleeping.
-        </p>
-        <div class="phone hero-phone">
-          <video
-            src="/assets/video/evermama-preview-web.mp4"
-            poster="/assets/video/evermama-preview-poster.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            aria-label="EverMama product tour — welcome screen, starter habits, your day grouped by your body's rhythm, the step-through habit sheet, the library, building a new habit, the all-done state, and the future-me room."
-          ></video>
-        </div>
-        <p class="availability">
-          <a
-            href="https://apps.apple.com/us/app/evermama/id6767789541"
-            class="store-badge app-store-badge"
-            aria-label="Download EverMama on the App Store"
-          >
-            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" />
-          </a>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.evermama.app"
-            class="store-badge play-badge"
-            aria-label="Get EverMama on Google Play"
-          >
-            <img src="/assets/google-play-badge.png" alt="Get it on Google Play" />
-          </a>
-        </p>
-        <p class="availability-note">
-          More habits are on the way, so if there's something you wish was
-          in there,&nbsp;<a href="https://forms.gle/dcR8sUbCnc4DHEsK9" target="_blank" rel="noopener" style="white-space: nowrap">Tell&nbsp;us.</a>
-        </p>
       </section>
 
-      <section>
-        <span class="kicker">why it works</span>
-        <h2>tiny now, enormous later</h2>
-        <p style="text-align: center; max-width: 640px; margin: 0 auto 18px">
-          Every habit in here is pointed at a version of you who is decades
-          away &mdash; the one who swings her kid up onto her shoulders
-          without thinking about it, or who sneezes at school pickup and
-          doesn't think about it again. You won't be waiting decades to
-          feel anything, though, because most of these start paying you
-          back long before that: sleep usually shifts inside the first
-          week or two, and energy tends to follow it.
-        </p>
-        <p style="text-align: center; max-width: 640px; margin: 0 auto; color: var(--muted)">
-          That far-off version of you gets a line of her own, written in
-          your words &mdash; <em>so years from now I can lift my kid onto my
-          shoulders without a second thought</em> &mdash; and it greets you
-          every time you keep the habit and rides along on every reminder,
-          because she is the reason any of this is worth the minutes.
-        </p>
-      </section>
-
-      <section>
-        <span class="kicker">inside the app</span>
-        <h2>a library of habits, none of them long</h2>
-        <p style="text-align: center; max-width: 640px; margin: 0 auto 40px; color: var(--muted)">
-          Four squats by the crib, ten pages of the book on your
-          nightstand, ten minutes with your legs up the wall, or a call to
-          the friend you keep meaning to ring back &mdash; none of them ask
-          much of you, and each one sits in the part of the day your body
-          is best set up for it. There's no account to make and no name to
-          give, so you open the app and it simply works.
-        </p>
-
-        <div class="tour">
-          <figure class="tour-card">
-            <div class="phone">
-              <img
-                src="/assets/screenshots/05-library.png"
-                alt="The library screen with when, kind, goal and future-me filters above a morning card for &lsquo;Eat 30g protein at breakfast.&rsquo;"
-                loading="lazy"
-              />
+      <section class="band band--tint">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">why mamas keep it</span>
+            <h2>we made it easy to keep</h2>
+            <p class="section-lede">
+              Four things you'll notice in the first minute.
+            </p>
+          </div>
+          <div class="cards cards--4">
+            <div class="card">
+              <h3>open and go</h3>
+              <p>
+                There's no sign-up and no name to give. You open the app and
+                it works.
+              </p>
             </div>
-            <figcaption>
-              <div class="name">a growing library</div>
-              <div class="future">
-                Tap any habit and it will walk you through the whole thing and explain, in plain words, why it's worth the minutes &mdash; and you can browse as many as you like without committing to any of them, because nothing lands in your day until you say so.
-              </div>
-            </figcaption>
-          </figure>
-          <figure class="tour-card">
-            <div class="phone">
-              <img
-                src="/assets/screenshots/06-build.png"
-                alt="The new-habit screen pairing &lsquo;I will name three good things&rsquo; with an anchor, &lsquo;after I plug in my phone for the night.&rsquo;"
-                loading="lazy"
-              />
+            <div class="card">
+              <h3>short enough</h3>
+              <p>
+                Every habit in here fits a bad night. Two minutes is a long
+                one.
+              </p>
             </div>
-            <figcaption>
-              <div class="name">anchored to your day</div>
-              <div class="future">
-                You probably won't remember a habit on a rough morning, but you will remember to put the kettle on, which is why every habit here gets tied to a moment that already happens &mdash; so the moment does the remembering on your behalf.
-              </div>
-            </figcaption>
-          </figure>
-          <figure class="tour-card">
-            <div class="phone">
-              <img
-                src="/assets/screenshots/08-future-me.png"
-                alt="The Future Me screen listing &lsquo;Do 4 squats by the crib&rsquo; and &lsquo;Name three good things&rsquo; with the mother they are shaping."
-                loading="lazy"
-              />
+            <div class="card">
+              <h3>timed to your body</h3>
+              <p>
+                Each habit sits in the part of the day your body is already
+                set up for it.
+              </p>
             </div>
-            <figcaption>
-              <div class="name">the future-me room</div>
-              <div class="future">
-                At some point a habit stops feeling like a habit and simply becomes something you do, and that's when you retire it: it moves in here, its reminders go quiet, and if you ever decide you want it back in rotation, it comes back.
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="feats-quiet">
-          <div class="feat-quiet">
-            <h3>hold to mark it done</h3>
-            <p>Press and hold the little ring on a card and it fills in about a second, after which a line slides up to tell you who you're becoming &mdash; and that, rather than any confetti, is the whole celebration.</p>
-          </div>
-          <div class="feat-quiet">
-            <h3>no streak to lose</h3>
-            <p>The only number the app keeps is <em>days kept</em>, and missing a Tuesday doesn't reset it, so there are no badges to chase, no red marks on a calendar, and nothing lighting up at 11pm to tell you you've broken something.</p>
-          </div>
-          <div class="feat-quiet">
-            <h3>reminders that pull their weight</h3>
-            <p>A reminder arrives carrying your habit's name and your future-me line on the lock screen, and you can mark the habit done or push it back half an hour from there without ever opening the app.</p>
-          </div>
-          <div class="feat-quiet">
-            <h3>notes to self</h3>
-            <p>Every habit keeps a wall of paper notes, each with the usual snag on the front and the fix on the back &mdash; &ldquo;I just forget&rdquo; on one side, &ldquo;a full glass in every room&rdquo; on the other &mdash; and you can pin up your own.</p>
-          </div>
-          <div class="feat-quiet">
-            <h3>when one starts slipping</h3>
-            <p>If a habit goes three days untouched you'll get exactly one message, and it asks what's making this hard rather than telling you off; answer it or ignore it entirely and it stays quiet for two weeks either way.</p>
-          </div>
-          <div class="feat-quiet">
-            <h3>nothing is final</h3>
-            <p>If you tap something by accident you can undo it with a single &#8634;, and a redo waits there in case you change your mind again; on a day with nothing scheduled the screen simply reads <em>a soft day</em> and leaves you be.</p>
+            <div class="card">
+              <h3>it stays on your phone</h3>
+              <p>
+                Your habits live on your device. Sign in only if you want
+                them to follow you to a new one.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <span class="kicker">the receipts</span>
-        <h2>none of this is vibes</h2>
-        <p style="text-align: center; max-width: 640px; margin: 0 auto 16px">
-          Tiny genuinely does work, and twenty years of research at
-          <a href="https://www.gsb.stanford.edu/insights/building-habits-key-lasting-behavior-change">Stanford's
-          Behavior Design Lab</a> keeps arriving at the same conclusion:
-          the habit that survives is the one small enough to manage on
-          your worst night. Tying that habit to something you already do
-          has a clunky name,
-          <a href="https://www.prospectivepsych.org/sites/default/files/pictures/Gollwitzer_Implementation-intentions-1999.pdf">implementation
-          intentions</a>, but it's one of the most replicated findings in
-          behavior science, and being able to picture a specific future
-          version of yourself matters nearly as much, since
-          <a href="https://nyaspubs.onlinelibrary.wiley.com/doi/10.1111/j.1749-6632.2011.06201.x">Hal
-          Hershfield's lab at UCLA</a> found that people who can actually
-          see her make measurably different choices today.
-        </p>
-        <p style="text-align: center; max-width: 640px; margin: 0 auto; color: var(--muted)">
-          The timing comes out of the circadian work at
-          <a href="https://www.salk.edu/scientist/satchidananda-panda/">Satchin
-          Panda's lab at the Salk Institute</a>: cortisol peaks in the
-          morning, your muscles are strongest in the late afternoon, and
-          melatonin climbs once the light goes, so each habit is placed
-          where your body is already most ready for it. The library
-          follows postpartum activity guidance from
-          <a href="https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/04/physical-activity-and-exercise-during-pregnancy-and-the-postpartum-period">ACOG</a>
-          and the <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/">WHO</a>,
-          and it never offers you medical advice &mdash; only something
-          short to do today that keeps paying out for decades.
-        </p>
+      <section class="band">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">how it works</span>
+            <h2>three steps, once</h2>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <span class="num" aria-hidden="true">1</span>
+              <h3>pick something small</h3>
+              <p>
+                Four squats by the crib. Ten pages of the book on your
+                nightstand. Ten minutes with your legs up the wall.
+              </p>
+            </div>
+            <div class="step">
+              <span class="num" aria-hidden="true">2</span>
+              <h3>tie it to your day</h3>
+              <p>
+                You'll forget a habit on a rough morning, but you'll
+                remember to put the kettle on. Pair the two and the kettle
+                does the remembering.
+              </p>
+            </div>
+            <div class="step">
+              <span class="num" aria-hidden="true">3</span>
+              <h3>hold to mark it done</h3>
+              <p>
+                Press the little ring for about a second and it fills. Then
+                a line comes up telling you who you're becoming.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
-      </main>
 
-      <footer class="site">
+      <section class="band band--tint">
+        <div class="wrap">
+          <div class="split">
+            <div class="split-copy">
+              <span class="kicker">phone or wrist</span>
+              <h2>done in one tap</h2>
+              <p class="section-lede">
+                The reminder shows up carrying your habit and your future-me
+                line. Tap done right there, from your phone or from your
+                wrist. You never have to open the app.
+              </p>
+              <ul class="plain-list">
+                <li>Busy hands? Push it back half an hour from the same notification.</li>
+                <li>Tapped it by accident? One ↺ puts it back, and a redo waits in case you change your mind again.</li>
+                <li>If a habit goes three days untouched, you get one message asking what's making it hard. Answer it or leave it, and either way it stays quiet for two weeks.</li>
+                <li>On a day with nothing scheduled, the screen just reads <em>a soft day</em>.</li>
+              </ul>
+            </div>
+            <div class="split-media">
+              <div class="phone">
+                <video
+                  src="/assets/video/evermama-preview-web.mp4"
+                  poster="/assets/video/evermama-preview-poster.jpg"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="auto"
+                  aria-label="EverMama product tour — welcome screen, starter habits, your day grouped by your body's rhythm, the step-through habit sheet, the library, building a new habit, the all-done state, and the future-me room."
+                ></video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">inside the app</span>
+            <h2>a library of habits, none of them long</h2>
+          </div>
+          <div class="tour">
+            <figure class="tour-card">
+              <div class="phone">
+                <img
+                  src="/assets/screenshots/05-library.png"
+                  alt="The library screen with when, kind, goal and future-me filters above a morning card for &lsquo;Eat 30g protein at breakfast.&rsquo;"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <div class="name">a growing library</div>
+                <div class="future">
+                  Tap any habit and it walks you through the whole thing, and
+                  tells you in plain words why it's worth the minutes.
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="tour-card">
+              <div class="phone">
+                <img
+                  src="/assets/screenshots/06-build.png"
+                  alt="The new-habit screen pairing &lsquo;I will name three good things&rsquo; with an anchor, &lsquo;after I plug in my phone for the night.&rsquo;"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <div class="name">anchored to your day</div>
+                <div class="future">
+                  Every habit gets tied to a moment that already happens, so
+                  the moment does the remembering for you.
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="tour-card">
+              <div class="phone">
+                <img
+                  src="/assets/screenshots/08-future-me.png"
+                  alt="The Future Me screen listing &lsquo;Do 4 squats by the crib&rsquo; and &lsquo;Name three good things&rsquo; with the mother they are shaping."
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <div class="name">the future-me room</div>
+                <div class="future">
+                  When a habit stops feeling like a habit, retire it. It moves
+                  in here and its reminders go quiet.
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--ink">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">the one number we keep</span>
+            <h2>miss a Tuesday, nothing breaks</h2>
+            <p class="section-lede">
+              We count days kept, and a missed Tuesday leaves that count
+              exactly where it was. Nothing turns red, and nothing lights up
+              at 11pm to tell you you've slipped.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">tiny now, enormous later</span>
+            <h2>she's the reason it's worth the minutes</h2>
+            <p class="section-lede">
+              Every habit points at a version of you decades out — the one
+              who swings her growing kid up onto her shoulders without
+              thinking about it.
+            </p>
+          </div>
+          <div class="cards cards--2">
+            <div class="card">
+              <h3>you'll feel it this week</h3>
+              <p>
+                You won't wait decades to notice anything. Sleep usually
+                shifts inside the first week or two, and energy follows it.
+              </p>
+            </div>
+            <div class="card">
+              <h3>she gets a line of her own</h3>
+              <p>
+                Written in your words. It greets you every time you keep the
+                habit, and it rides along on every reminder.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--tint">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="kicker">the receipts</span>
+            <h2>none of this is vibes</h2>
+          </div>
+          <div class="cards cards--4">
+            <div class="receipt">
+              <h3>small survives</h3>
+              <p>
+                Twenty years of research keeps landing on the same thing: the
+                habit that survives is the one small enough to manage on your
+                worst night.
+              </p>
+              <p class="source">
+                <a href="https://www.gsb.stanford.edu/insights/building-habits-key-lasting-behavior-change">Stanford
+                Behavior Design Lab</a>
+              </p>
+            </div>
+            <div class="receipt">
+              <h3>anchors work</h3>
+              <p>
+                Tying a new habit to something you already do has a clunky
+                name and one of the most replicated results in behavior
+                science.
+              </p>
+              <p class="source">
+                <a href="https://www.prospectivepsych.org/sites/default/files/pictures/Gollwitzer_Implementation-intentions-1999.pdf">Gollwitzer,
+                implementation intentions</a>
+              </p>
+            </div>
+            <div class="receipt">
+              <h3>picture her clearly</h3>
+              <p>
+                People who can actually see their future self make measurably
+                different choices today.
+              </p>
+              <p class="source">
+                <a href="https://nyaspubs.onlinelibrary.wiley.com/doi/10.1111/j.1749-6632.2011.06201.x">Hal
+                Hershfield's lab, UCLA</a>
+              </p>
+            </div>
+            <div class="receipt">
+              <h3>timing matters</h3>
+              <p>
+                Cortisol peaks in the morning, your muscles are strongest late
+                afternoon, and melatonin climbs once the light goes.
+              </p>
+              <p class="source">
+                <a href="https://www.salk.edu/scientist/satchidananda-panda/">Satchin
+                Panda's lab, Salk Institute</a>
+              </p>
+            </div>
+          </div>
+          <p class="footnote">
+            The library follows postpartum activity guidance from
+            <a href="https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/04/physical-activity-and-exercise-during-pregnancy-and-the-postpartum-period">ACOG</a>
+            and the <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/">WHO</a>.
+            It gives you something short to do today, and leaves the medical
+            advice to your doctor.
+          </p>
+        </div>
+      </section>
+
+      <section class="band band--ink cta" id="get">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>start with one small thing</h2>
+            <p class="section-lede">Pick one habit tonight. That's the whole ask.</p>
+          </div>
+          <p class="badges">
+            <a
+              href="https://apps.apple.com/us/app/evermama/id6767789541"
+              class="store-badge app-store-badge"
+              aria-label="Download EverMama on the App Store"
+            >
+              <img src="/assets/app-store-badge.svg" alt="Download on the App Store" />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.evermama.app"
+              class="store-badge play-badge"
+              aria-label="Get EverMama on Google Play"
+            >
+              <img src="/assets/google-play-badge.png" alt="Get it on Google Play" />
+            </a>
+          </p>
+          <p class="badge-note">
+            More habits are on the way, so if there's one you wish was in
+            there,&nbsp;<a href="https://forms.gle/dcR8sUbCnc4DHEsK9" target="_blank" rel="noopener" style="white-space: nowrap">tell&nbsp;us.</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
         <div>© 2026 EverMama</div>
         <nav>
           <a href="/privacy.html">Privacy</a>
           <a href="/support.html">Support</a>
         </nav>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
       <button type="button" class="lightbox-close" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -252,8 +406,8 @@
     </div>
 
     <script>
-      // Honour the OS Reduce Motion setting for the hero preview video.
-      // The CSS @media (prefers-reduced-motion: reduce) block neutralises
+      // Honor the OS Reduce Motion setting for the product preview video.
+      // The CSS @media (prefers-reduced-motion: reduce) block neutralizes
       // every transition and keyframe animation on the page, but a
       // <video> element ignores CSS animation suppression — its autoplay
       // is governed by the element's own attributes. This pauses it on
@@ -263,7 +417,7 @@
         var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
         if (!mq) return;
         function apply() {
-          document.querySelectorAll('.hero-phone video').forEach(function (v) {
+          document.querySelectorAll('.split-media video').forEach(function (v) {
             if (mq.matches) {
               v.removeAttribute('autoplay');
               v.pause();
