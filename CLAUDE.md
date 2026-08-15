@@ -28,7 +28,7 @@ This site is a sibling of `evermama-habit-builder` (the React Native app repo) a
   - **The home page shows three, in phone frames**: library, build, future-me. This is the long-standing layout and it is the one that looks right. An August 2026 attempt to replace it with a grid of ten per-feature crops (600 × 400 windows cut from each screenshot with `sharp.extract`) was reverted on sight — the crops were accurate but the page read as cluttered and busy. Don't re-try it without a design pass; if more screens need showing, add phone-framed cards, not crops.
   - `03-home.png` ships but is unreferenced — kept as a ready alternative if a fourth card is ever wanted.
   - **`01-welcome.png` is deliberately absent.** The store capture predates the July 2026 plain-voice pivot — it still reads *a keepsake, not a tracker* and *every small habit today shapes the mother you'll become*, neither of which the shipped app says any more (and the first is exactly the negation-correction pattern the voice bar bans). Re-capture the welcome screen from a device before using it.
-- **Illustrations.** `assets/illustrations/intro-hero.png` is the home page's hero band: the app's `assets/illustrations/intro.png` (1080 × 720) pre-cropped to 1080 × 520 to trim empty ceiling and foreground floor while keeping both figures whole. The crop lives in the *asset*, not in CSS — a fixed-height `object-fit: cover` band cuts the mother's head off, because every one of these scenes composes its figures near the vertical middle. If you swap the hero, crop the file the same way.
+- **Illustrations.** `assets/illustrations/intro-hero.png` is the home page's hero band: the app's `assets/illustrations/intro.png` (1080 × 720) pre-cropped to 1080 × 520 to trim empty ceiling and foreground floor while keeping both figures whole. The crop lives in the *asset*, not in CSS — a fixed-height `object-fit: cover` band cuts the mother's head off, because every one of these scenes composes its figures near the vertical middle. If you swap the hero, crop the file the same way. `assets/illustrations/becoming.png` (the "note to the mama" band) is the app's `carry-with-control.png` resampled to 900 px wide via the same `sharp` recipe; it's shown whole in `.note-scene` rather than cropped to a strip, for the same head-cutting reason.
 
 ## Brand rules
 
@@ -46,23 +46,19 @@ Both pages share the same header/footer block as `index.html`; if you change one
 
 ## Page structure
 
-`index.html` is eight full-bleed bands, alternating `--page` against `--band` so the page reads as sectioned rather than as one scroll of prose:
+`index.html` is five full-bleed bands, alternating `--page` against `--band` so the page reads as sectioned rather than as one scroll of prose:
 
 1. **hero** — painted scene, headline, one-sentence lede, store badges
-2. **why mamas keep it** (tint) — four short `.card`s
-3. **how it works** — three numbered `.step`s, numerals taking the time-window accent arc
-4. **done in one tap** (tint) — `.split`: copy plus the looping product video, and the `.plain-list` of notification behaviors
-5. **inside the app** — three phone-framed screenshots
-6. **miss a Tuesday, nothing breaks** (`.band--ink`) — the anti-streak stance, heading and one paragraph
-7. **tiny now, enormous later** — two `.card`s
-8. **the receipts** (tint) — four `.receipt` cards, one research claim each, plus the ACOG/WHO footnote
-9. **closing CTA** (`.band--ink`, `#get`) — badges again
+2. **how it works** (tint) — four phone-framed `.tour-card`s whose names read as verb-first steps (pick something small / tie it to your day / make it stick / take the long view), under the "library of habits, timed to your day" heading. This band absorbed the old numbered-steps band; the two said the same three things. "make it stick" (the wall-of-notes card — the app's "notes to self" feature, per `evermama-habit-builder/docs/features.md`) has no screenshot yet — its phone frame holds a `.phone-placeholder` cream screen until the capture exists; swap it for an `<img>` when it does.
+3. **a note to the mama you're becoming** — the "why it works" stance, two short paragraphs, and the `.note-scene` illustration
+4. **the research** (tint) — four `.receipt` cards, one research claim each, plus the ACOG/WHO footnote
+5. **closing CTA** (`.band--ink`, `#get`) — badges again. The looping product video was cut from the page in August 2026 after trying three homes (split band, tour card, hero); `assets/video/` still holds the mp4 and poster if it's ever wanted back.
 
 Rules that hold across the rebuild:
 
 - **Each band is short by design.** A `.card` or `.step` holds a heading and at most two sentences; `.section-lede` is one sentence. The reading is supposed to happen in the app. If a band needs three paragraphs, it wants to be two bands.
-- **`.band--ink` is the emphasis tone and is spent exactly twice** (the anti-streak stance and the closing CTA). Adding a third costs the other two their weight.
-- **Screenshots stay phone-framed, three of them.** Unchanged from before, and per the note above, the crop-grid experiment was reverted on sight.
+- **`.band--ink` is the emphasis tone and is spent exactly once** (the closing CTA). Adding more costs it its weight.
+- **Screenshots stay phone-framed** — four cards, one of them awaiting its capture. Per the note above, the crop-grid experiment was reverted on sight.
 - **The header/footer block is identical on all three pages**, including the `.nav-cta` pointing at `/#get`. Change one, change all three.
 
 ## Voice

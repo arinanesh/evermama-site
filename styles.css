@@ -235,8 +235,8 @@ footer.site a:hover {
    The page's new rhythm. Every section is a full-bleed band; alternating
    `--band` cream against the near-white page is what makes the page read
    as sectioned rather than as one scroll of prose. `.band--ink` is the
-   emphasis tone, spent on exactly two places (the anti-streak stance and
-   the closing CTA) so it keeps its weight. */
+   emphasis tone, spent on exactly one place (the closing CTA) so it
+   keeps its weight. */
 
 .band {
   padding: 88px 0;
@@ -424,12 +424,9 @@ h2 {
   padding: 7px;
   box-shadow: var(--shadow-card);
   cursor: zoom-in;
-  /* Safari/iOS sometimes ignores border-radius on the inner <video>;
-     clipping at the frame guarantees the rounded screen. */
   overflow: hidden;
 }
-.phone img,
-.phone video {
+.phone img {
   display: block;
   width: 100%;
   height: 100%;
@@ -482,50 +479,6 @@ h2 {
   margin: 0;
 }
 
-/* ---------- how it works ----------
-
-   Numbered steps. The numeral takes the app's time-window accents in
-   order (morning teal, afternoon rust, evening violet) so the site
-   carries the same color logic the app's day is grouped by. */
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.step {
-  text-align: center;
-}
-.step .num {
-  display: block;
-  font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 46px;
-  line-height: 1;
-  margin-bottom: 14px;
-}
-.step:nth-child(1) .num {
-  color: var(--morning);
-}
-.step:nth-child(2) .num {
-  color: var(--afternoon);
-}
-.step:nth-child(3) .num {
-  color: var(--evening);
-}
-.step h3 {
-  font-family: 'Cormorant Garamond', Garamond, serif;
-  font-size: 25px;
-  font-weight: 500;
-  margin: 0 0 10px;
-  color: var(--ink);
-}
-.step p {
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.6;
-  margin: 0;
-}
-
 /* ---------- app tour ----------
 
    Three phone-framed screenshots. Per CLAUDE.md this is the layout that
@@ -535,8 +488,8 @@ h2 {
 
 .tour {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 }
 .tour-card {
   margin: 0;
@@ -563,55 +516,43 @@ h2 {
   line-height: 1.6;
 }
 
-/* ---------- split section (copy beside the product video) ---------- */
-
-.split {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 64px;
-  align-items: center;
-}
-.split-copy h2 {
-  margin-top: 0;
-}
-.split-copy .section-lede {
-  margin-bottom: 22px;
-}
-.split-media .phone {
-  max-width: 280px;
-  margin: 0 auto;
-  /* Carries a looping video, not a click-to-zoom screenshot — override
-     the default zoom-in cursor inherited from .phone. */
+/* The "make it stick" card ships before its screenshot exists — a
+   recessed cream screen holds the slot until the capture lands. Swap
+   the .phone-placeholder div for an <img> when it does. */
+.phone--placeholder {
   cursor: default;
 }
-
-/* A short list of plain statements under the split copy. The dash is a
-   list marker, so it is drawn as a pseudo-element rather than typed into
-   the content. */
-.plain-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.phone-placeholder {
+  height: 100%;
+  border-radius: 31px;
+  background: var(--recess);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.plain-list li {
-  position: relative;
-  padding-left: 22px;
-  margin-bottom: 10px;
+.phone-placeholder span {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-style: italic;
+  font-size: 18px;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.6;
 }
-.plain-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 10px;
-  height: 1px;
-  background: var(--border);
+
+/* ---------- the note band's illustration ----------
+
+   Shown whole (900 × 600), not cropped to a strip — like every scene in
+   this set, the figures compose near the vertical middle, so a fixed-
+   height object-fit band would cut the mother's head off. */
+.note-scene {
+  max-width: 620px;
+  margin: 44px auto 0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
-.plain-list li:last-child {
-  margin-bottom: 0;
+.note-scene img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* ---------- receipts ----------
@@ -859,10 +800,9 @@ h2 {
    Mirrors the app's Phase 7 runtime accessibility layer (commit 28f3517
    in evermama-habit-builder, docs/accessibility-audit.html §7). Visitors
    running the OS-level Reduce Motion setting get the same affordance
-   here: link/button color transitions collapse to instant, the lightbox
-   crossfade drops to a hard cut, and the product video pauses on its
-   poster frame so nothing autoplays. The visual default is unchanged for
-   everyone else. */
+   here: link/button color transitions collapse to instant and the
+   lightbox crossfade drops to a hard cut. The visual default is
+   unchanged for everyone else. */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -872,14 +812,6 @@ h2 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-  /* Pause the autoplay product video. Safari respects this via the
-     `controls` paint, but the video element itself ignores CSS animation
-     suppression — the tiny inline script at the bottom of index.html
-     handles the actual `pause()` call. This rule is the CSS half: hide
-     the would-be loop indicator if controls ever surface. */
-  .split-media video {
-    animation-play-state: paused !important;
   }
 }
 
@@ -892,14 +824,9 @@ h2 {
   .cards--4 {
     grid-template-columns: repeat(2, 1fr);
   }
-  .split {
-    grid-template-columns: 1fr;
+  .tour {
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    text-align: center;
-  }
-  .split-copy .plain-list {
-    display: inline-block;
-    text-align: left;
   }
   .hero h1 {
     font-size: 50px;
@@ -910,10 +837,6 @@ h2 {
   .cards--3,
   .cards--2 {
     grid-template-columns: 1fr;
-  }
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 34px;
   }
   .tour {
     grid-template-columns: 1fr;
