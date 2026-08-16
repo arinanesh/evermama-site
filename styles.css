@@ -860,3 +860,15 @@ h2 {
     gap: 10px;
   }
 }
+
+/* The one-row header needs ~444px (wordmark 156 + nav 244 + side padding),
+   so on phones it can't fit however much the gaps shrink. Stack it:
+   wordmark above, nav row below, both centered. */
+@media (max-width: 480px) {
+  header.site .wrap {
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}
