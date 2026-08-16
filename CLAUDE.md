@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Marketing landing page for the **EverMama** habit-builder app, plus the privacy and support pages required by Apple App Store and Google Play. Three hand-written HTML pages (`index.html`, `privacy.html`, `support.html`) sharing one stylesheet (`styles.css`). No build step, no framework, no `package.json`, no toolchain.
+Marketing landing page for the **EverMama** habit-builder app, plus the privacy and support pages required by Apple App Store and Google Play. Four hand-written HTML pages (`index.html`, `privacy.html`, `support.html`, `delete-account.html`) sharing one stylesheet (`styles.css`). No build step, no framework, no `package.json`, no toolchain.
 
 ## Local preview
 
@@ -41,8 +41,9 @@ This site is a sibling of `evermama-habit-builder` (the React Native app repo) a
 The store consoles point at these URLs — don't rename or move:
 - Privacy policy → `/privacy.html`
 - Support → `/support.html`
+- Account deletion (Play Console Data safety "delete account" URL) → `/delete-account.html`
 
-Both pages share the same header/footer block as `index.html`; if you change one (e.g., adding a nav link), change all three.
+All doc pages share the same header/footer block as `index.html`; if you change one (e.g., adding a nav link), change all three.
 
 ## Page structure
 
