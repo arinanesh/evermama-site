@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+  POST TEMPLATE. Copy to blog/<slug>.html, fill every {{SLOT}}, then add a
+  .post-card for it at the top of the list in blog/index.html.
+  Slots: TITLE, DESCRIPTION (one sentence, for search/social), DATE
+  (e.g. 21 August 2026), DATETIME (e.g. 2026-08-21), DEK (one-line
+  subtitle), BODY (plain <p> paragraphs; <h2> for sections;
+  <blockquote> for a pull quote).
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}} — EverMama</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <meta name="theme-color" content="#fdfcfa" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a href="/" class="wordmark">
+          <img src="/assets/mark.png" alt="" class="wordmark-icon" />
+          EverMama
+        </a>
+        <nav>
+          <a href="/blog/">Blog</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/support.html">Support</a>
+          <a href="/#get" class="nav-cta">Get the app</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap wrap--doc doc">
+      <article class="post">
+        <span class="kicker"><time datetime="{{DATETIME}}">{{DATE}}</time></span>
+        <h1>{{TITLE}}</h1>
+        <p class="dek">{{DEK}}</p>
+
+        <div class="post-body">
+          {{BODY}}
+        </div>
+
+        <div class="post-foot">
+          <p><a href="/blog/">← All posts</a></p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <div>© 2026 EverMama</div>
+        <nav>
+          <a href="/blog/">Blog</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/support.html">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

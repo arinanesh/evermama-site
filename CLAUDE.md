@@ -43,7 +43,11 @@ The store consoles point at these URLs — don't rename or move:
 - Support → `/support.html`
 - Account deletion (Play Console Data safety "delete account" URL) → `/delete-account.html`
 
-All doc pages share the same header/footer block as `index.html`; if you change one (e.g., adding a nav link), change all three.
+All doc pages share the same header/footer block as `index.html`; if you change one (e.g., adding a nav link), change all of them — including `blog/index.html`, `blog/_template.html`, and every published post under `blog/`.
+
+## Blog
+
+`blog/` is a hand-maintained static blog, no build step. `blog/index.html` is the list; each post is its own HTML file copied from `blog/_template.html` (fill the `{{SLOT}}`s, delete the template comment). To publish: copy the template to `blog/<slug>.html`, then paste a `.post-card` at the **top** of the `.post-list` in `blog/index.html` (newest first). Blog styles live at the bottom of `styles.css` under `/* ---------- blog ---------- */`. Posts are written in the founder's first person and follow the same voice rules as the rest of the site.
 
 ## Page structure
 

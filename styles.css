@@ -872,3 +872,91 @@ h2 {
     padding-bottom: 18px;
   }
 }
+
+/* ---------- blog ----------
+
+   Two pages share the doc column: `/blog/` (the index) and each post.
+   The index is a hand-maintained list — add a `.post-card` at the top of
+   the list when a post ships; newest first. Each post is a copy of
+   `blog/_template.html` with the slots filled in. No build step, same as
+   the rest of the site. */
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 0;
+}
+.post-card {
+  border-top: 1px solid var(--border-soft);
+  padding: 30px 0;
+}
+.post-card:last-child {
+  border-bottom: 1px solid var(--border-soft);
+}
+.post-card .kicker {
+  margin-bottom: 8px;
+}
+.post-card h2 {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+.post-card h2 a {
+  text-decoration: none;
+}
+.post-card h2 a:hover {
+  color: var(--terracotta);
+}
+.post-card p {
+  color: var(--muted);
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Article: a dateline above the title, and a slightly wider leading for
+   long-form reading than the legal pages use. */
+.post .kicker {
+  margin-bottom: 10px;
+}
+.post h1 {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.post .dek {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin: -14px 0 36px;
+}
+.post-body strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.post-body p {
+  font-size: 19px;
+  line-height: 1.7;
+  margin: 0 0 1.2em;
+}
+.post-body h2 {
+  margin-top: 48px;
+}
+.post-body blockquote {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-size: 26px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 40px 0;
+  padding-left: 22px;
+  border-left: 2px solid var(--terracotta);
+}
+.post-foot {
+  margin-top: 52px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-soft);
+  color: var(--muted);
+  font-size: 17px;
+}
+.post-foot p {
+  margin: 0 0 10px;
+}
