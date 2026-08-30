@@ -1,8 +1,10 @@
 <!doctype html>
 <!--
   POST TEMPLATE. Copy to blog/<slug>.html, fill every {{SLOT}}, then add a
-  .post-card for it at the top of the list in blog/index.html.
-  Slots: TITLE, DESCRIPTION (one sentence, for search/social), DATE
+  .post-card for it at the top of the list in blog/index.html, and add its
+  URL to /sitemap.xml.
+  Slots: TITLE, SLUG (the filename without .html; goes in the canonical
+  URL), DESCRIPTION (one sentence, for search/social), DATE
   (e.g. 21 August 2026), DATETIME (e.g. 2026-08-21), DEK (one-line
   subtitle), BODY (plain <p> paragraphs; <h2> for sections;
   <blockquote> for a pull quote).
@@ -12,6 +14,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{TITLE}} — EverMama</title>
+    <link rel="canonical" href="https://evermama.app/blog/{{SLUG}}" />
     <meta name="description" content="{{DESCRIPTION}}" />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
     <meta name="theme-color" content="#fdfcfa" />
@@ -36,8 +39,8 @@
         </a>
         <nav>
           <a href="/blog/">Blog</a>
-          <a href="/privacy.html">Privacy</a>
-          <a href="/support.html">Support</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/support">Support</a>
           <a href="/#get" class="nav-cta">Get the app</a>
         </nav>
       </div>
@@ -64,8 +67,8 @@
         <div>© 2026 EverMama</div>
         <nav>
           <a href="/blog/">Blog</a>
-          <a href="/privacy.html">Privacy</a>
-          <a href="/support.html">Support</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/support">Support</a>
         </nav>
       </div>
     </footer>

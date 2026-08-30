@@ -9,11 +9,11 @@ Marketing landing page for the **EverMama** habit-builder app, plus the privacy 
 ## Local preview
 
 ```bash
-python -m http.server 4000
-# open http://localhost:4000
+npx wrangler dev
+# open http://localhost:8787
 ```
 
-Or open `index.html` directly. Absolute paths (`/styles.css`, `/assets/...`) resolve against the served origin in production and against the file's directory when opened from disk — both work.
+`wrangler dev` mirrors production's URL handling (see *Canonical URLs* below), so `/privacy` resolves. `python -m http.server` or opening `index.html` from disk still renders any single page, but the extensionless internal links won't resolve there.
 
 ## Deploying
 
@@ -37,9 +37,18 @@ This site is a sibling of `evermama-habit-builder` (the React Native app repo) a
 - **All colors and font families are defined exactly once**, in the `:root` block at the top of `styles.css`. Don't sprinkle hex values or font-family declarations into pages — extend the token set instead.
 - Inline `style=""` attributes appear on a few one-off centered paragraphs and on the secondary-h2s inside `support.html`'s FAQ; that's the existing pattern for genuine one-offs and is fine. Don't add classes for things used once.
 
+## Canonical URLs, sitemap, robots
+
+Production is Cloudflare Workers static assets (`wrangler.jsonc`), whose default `html_handling` serves `support.html` at `/support` and 307-redirects `/support.html` → `/support`. Google therefore treats the **extensionless URL as canonical**, and the site follows suit (August 2026, after Search Console showed the `.html` URLs as "page with redirect" and the `http://` variants as "duplicate without user-selected canonical"):
+
+- Every page carries `<link rel="canonical" href="https://evermama.app/<path>">` — extensionless, `https`, trailing slash only on `/` and `/blog/`.
+- Internal links use the extensionless form (`/privacy`, `/support`, `/delete-account`, `/blog/<slug>`). The `.html` files themselves stay where they are.
+- `sitemap.xml` lists the six canonical URLs with a `lastmod` per page. **When you add a page or a blog post, add it to the sitemap and bump `lastmod` when you change a page's content.** `robots.txt` points at it (Cloudflare prepends its managed content-signals block; that's expected).
+- The sitemap is submitted in Search Console under the `sc-domain:evermama.app` property. `http://` → `https://` redirection is a Cloudflare dashboard setting (SSL/TLS → Edge Certificates → Always Use HTTPS), not something in this repo.
+
 ## Store-listing URL contract
 
-The store consoles point at these URLs — don't rename or move:
+The store consoles point at these URLs — don't rename or move the files (the `.html` form redirects to the canonical one, which is fine for the consoles):
 - Privacy policy → `/privacy.html`
 - Support → `/support.html`
 - Account deletion (Play Console Data safety "delete account" URL) → `/delete-account.html`
@@ -48,7 +57,7 @@ All doc pages share the same header/footer block as `index.html`; if you change 
 
 ## Blog
 
-`blog/` is a hand-maintained static blog, no build step. `blog/index.html` is the list; each post is its own HTML file copied from `blog/_template.html` (fill the `{{SLOT}}`s, delete the template comment). To publish: copy the template to `blog/<slug>.html`, then paste a `.post-card` at the **top** of the `.post-list` in `blog/index.html` (newest first). Blog styles live at the bottom of `styles.css` under `/* ---------- blog ---------- */`. Posts are written in the founder's first person and follow the same voice rules as the rest of the site.
+`blog/` is a hand-maintained static blog, no build step. `blog/index.html` is the list; each post is its own HTML file copied from `blog/_template.html` (fill the `{{SLOT}}`s, delete the template comment). To publish: copy the template to `blog/<slug>.html`, then paste a `.post-card` at the **top** of the `.post-list` in `blog/index.html` (newest first), and add the post's canonical URL to `sitemap.xml`. Blog styles live at the bottom of `styles.css` under `/* ---------- blog ---------- */`. Posts are written in the founder's first person and follow the same voice rules as the rest of the site.
 
 ## Page structure
 
