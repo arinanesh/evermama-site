@@ -1,0 +1,26 @@
+# Files in this directory that Cloudflare Workers static assets must NOT upload.
+# Everything else in the repo is served verbatim at evermama.app, so anything
+# listed here would otherwise be a public, crawlable URL.
+.git/
+.gitignore
+.assetsignore
+.wrangler/
+.vscode/
+.idea/
+node_modules/
+tmp/
+CLAUDE.md
+README.md
+wrangler.jsonc
+start.txt
+evermama-site-copy-choices.json
+*.md
+accessibility-audit.html
+blog/_template.html
+assets/screenshots/Screenshot_*.jpg
+assets/video/
+
+# Blog drafts, not published yet. Delete a line here when its post goes live
+# (and list it in blog/index.html + sitemap.xml at the same time).
+blog/how-to-build-healthy-habits-after-a-baby.html
+blog/how-evermama-works.html

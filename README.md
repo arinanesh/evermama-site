@@ -3,21 +3,29 @@
 Marketing landing page for the **EverMama** habit-builder app, plus the privacy
 and support pages required by the Apple App Store and Google Play.
 
-It's a hand-written static site — three HTML pages and one CSS file. No build
-step, no framework, no toolchain. Open `index.html` in a browser to preview;
-deploy by uploading the directory to any static host (GitHub Pages, Cloudflare
-Pages, Netlify, Vercel, S3 + CloudFront, etc.).
+It's a hand-written static site — four HTML pages, a small blog under `blog/`,
+and one CSS file. No build step, no framework, no toolchain. Production is
+Cloudflare Workers static assets (`wrangler.jsonc`); `.assetsignore` lists the
+repo files that must not be uploaded (git metadata, docs, drafts, the blog
+template). See `CLAUDE.md` for the SEO conventions every page follows
+(canonical URLs, Open Graph, JSON-LD, sitemap).
 
 ## Files
 
 ```
-index.html      marketing home
-privacy.html    privacy policy (linked from store listings)
-support.html    support page + contact (linked from store listings)
-styles.css      shared stylesheet — design tokens mirrored from the app
+index.html          marketing home
+privacy.html        privacy policy (linked from store listings)
+support.html        support page + contact (linked from store listings)
+delete-account.html account deletion (linked from Play Console)
+blog/               hand-maintained blog (index, posts, _template.html)
+styles.css          shared stylesheet — design tokens mirrored from the app
+sitemap.xml         every canonical URL; bump lastmod when a page changes
+robots.txt          points at the sitemap
+.assetsignore       files Cloudflare must not serve
 assets/
-  icon.png      app icon (used for the hero mark and apple-touch-icon)
-  favicon.png   favicon
+  icon.png          app icon (apple-touch-icon, og:image for doc pages)
+  favicon.png       favicon
+  illustrations/    painted scenes, each as .png + .webp sibling
 ```
 
 ## Brand

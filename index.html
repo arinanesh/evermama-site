@@ -3,23 +3,93 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EverMama — habits for mama life</title>
+    <title>EverMama — small healthy habits for new moms</title>
     <link rel="canonical" href="https://evermama.app/" />
     <meta
       name="description"
-      content="EverMama is a gentle habit-tracking app for new mothers: long-term wellness through small daily routines for strength, mobility, sleep, and mindfulness."
+      content="EverMama helps new moms build healthy habits that fit real life. Choose one small action and see how it supports the years ahead with your kid."
     />
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/icon.png" />
     <meta name="theme-color" content="#fdfcfa" />
 
-    <meta property="og:title" content="EverMama" />
+    <meta property="og:site_name" content="EverMama" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://evermama.app/" />
+    <meta property="og:title" content="EverMama — small healthy habits for new moms" />
     <meta
       property="og:description"
-      content="little things that fit the day you already have."
+      content="EverMama helps new moms build healthy habits that fit real life. Choose one small action and see how it supports the years ahead with your kid."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/assets/icon.png" />
+    <meta property="og:image" content="https://evermama.app/assets/illustrations/intro-hero.png" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="520" />
+    <meta
+      property="og:image:alt"
+      content="A painted scene of a mother sitting cross-legged on a yoga mat in a sunlit room, her small child sitting beside her holding a toy."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EverMama — small healthy habits for new moms" />
+    <meta
+      name="twitter:description"
+      content="EverMama helps new moms build healthy habits that fit real life. Choose one small action and see how it supports the years ahead with your kid."
+    />
+    <meta name="twitter:image" content="https://evermama.app/assets/illustrations/intro-hero.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://evermama.app/#organization",
+          "name": "EverMama",
+          "url": "https://evermama.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://evermama.app/assets/icon.png",
+            "width": 1024,
+            "height": 1024
+          },
+          "sameAs": [
+            "https://apps.apple.com/us/app/evermama/id6767789541",
+            "https://play.google.com/store/apps/details?id=com.evermama.app"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://evermama.app/#website",
+          "url": "https://evermama.app/",
+          "name": "EverMama",
+          "publisher": { "@id": "https://evermama.app/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "MobileApplication",
+          "@id": "https://evermama.app/#app",
+          "name": "EverMama",
+          "url": "https://evermama.app/",
+          "description": "EverMama helps new moms build healthy habits that fit real life. Choose one small action and see how it supports the years ahead with your kid.",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS, Android",
+          "image": "https://evermama.app/assets/icon.png",
+          "screenshot": [
+            "https://evermama.app/assets/screenshots/05-library.png",
+            "https://evermama.app/assets/screenshots/06-build.png",
+            "https://evermama.app/assets/screenshots/07-make-it-stick.png",
+            "https://evermama.app/assets/screenshots/08-future-me.png"
+          ],
+          "installUrl": [
+            "https://apps.apple.com/us/app/evermama/id6767789541",
+            "https://play.google.com/store/apps/details?id=com.evermama.app"
+          ],
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "author": { "@id": "https://evermama.app/#organization" },
+          "publisher": { "@id": "https://evermama.app/#organization" }
+        }
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,12 +119,16 @@
       <section class="hero">
         <div class="wrap">
           <div class="hero-scene">
-            <img
-              src="/assets/illustrations/intro-hero.png"
-              width="1080"
-              height="520"
-              alt="A painted scene of a mother sitting cross-legged on a yoga mat in a sunlit room, her small child sitting beside her holding a toy."
-            />
+            <picture>
+              <source srcset="/assets/illustrations/intro-hero.webp" type="image/webp" />
+              <img
+                src="/assets/illustrations/intro-hero.png"
+                width="1080"
+                height="520"
+                fetchpriority="high"
+                alt="A painted scene of a mother sitting cross-legged on a yoga mat in a sunlit room, her small child sitting beside her holding a toy."
+              />
+            </picture>
           </div>
           <h1>little habits that fit<br />the day you already have</h1>
           <p class="lede">
@@ -182,13 +256,17 @@
             </p>
           </div>
           <div class="note-scene">
-            <img
-              src="/assets/illustrations/becoming.png"
-              width="900"
-              height="600"
-              loading="lazy"
-              alt="A painted scene of a mother carrying her laughing toddler on one arm through a bright, sunlit hallway."
-            />
+            <picture>
+              <source srcset="/assets/illustrations/becoming.webp" type="image/webp" />
+              <img
+                src="/assets/illustrations/becoming.png"
+                width="900"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                alt="A painted scene of a mother carrying her laughing toddler on one arm through a bright, sunlit hallway."
+              />
+            </picture>
           </div>
         </div>
       </section>
