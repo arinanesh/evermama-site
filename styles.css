@@ -1431,6 +1431,11 @@ h2 {
   opacity: 0.7;
   font-style: italic;
 }
+.future-line .future-save {
+  border: 0;
+  margin-top: 14px;
+  cursor: pointer;
+}
 .post-body .future-note {
   font-size: 15px;
   color: var(--muted);
